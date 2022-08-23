@@ -1,0 +1,10 @@
+test welcome page
+
+<% if current_user %>
+ <p>Hello <%= current_user.email%>!</p>
+ <p>You Have Sucssfully create Account</p>
+
+<% end %>
+
+
+ <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
