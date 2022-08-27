@@ -1,7 +1,6 @@
 class WelcomesController < ApplicationController
-  before_action :authenticate_user!
+   before_action :authenticate_user!
 
   def welcome
-
   end
 end

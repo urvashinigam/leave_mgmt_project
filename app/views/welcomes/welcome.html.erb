@@ -2,7 +2,8 @@ test welcome page
 
 <% if current_user %>
  <p>Hello <%= current_user.email%>!</p>
- <p>current role[<%= current_user.role %>]</p>
+ 
+ <p>current type[<%= current_user.type %>]</p>
  <p>You Have Sucssfully create Account</p>
  <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
 
