@@ -1,0 +1,2 @@
+module TrurboDeviseUserHelper
+end

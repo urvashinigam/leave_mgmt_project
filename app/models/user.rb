@@ -8,10 +8,10 @@ class User < ApplicationRecord
   #  def set_default_role
   #   self.role ||= :user
   #  end
-  # def hr?
-  #   type == 'Hr'
-  # end
-  # def employee?
-  #   type == 'Employee'
-  # end
+  def hr?
+    type == 'Hr'
+  end
+  def employee?
+    type == 'Employee'
+  end
 end

@@ -1,6 +1,6 @@
 test welcome page
 
-<% if current_user %>
+<!-- <% if current_user %>
  <p>Hello <%= current_user.email%>!</p>
  
  <p>current type[<%= current_user.type %>]</p>
@@ -14,6 +14,21 @@ test welcome page
  <%= link_to "Login" , new_user_session_path %>
 
 
+<% end %> -->
+
+<% if current_user.employee? %>
+<h1>hello,emp</h1>
+<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
 <% end %>
+<% if current_user.hr? %>
+<h1>hello,hr</h1>
+<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+<% end %>
+
+
+
+
+
+
 
 
