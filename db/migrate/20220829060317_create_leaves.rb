@@ -1,13 +1,12 @@
 class CreateLeaves < ActiveRecord::Migration[7.0]
   def change
     create_table :leaves do |t|
-      t.integer :sl
-      t.integer :cl
-      t.string :hl
+      t.integer :status
+      t.integer :leaves_type
       t.string :leave_discription
-      t.date :starting_date
-      t.date :end_date
-
+      t.string :starting_date
+      t.string :end_date
+      t.belongs_to :user, foreign_key: true
       t.timestamps
     end
   end
