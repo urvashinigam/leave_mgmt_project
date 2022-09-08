@@ -1,0 +1,29 @@
+<h1>Leaves#new</h1>
+<p>Find me in app/views/leaves/new.html.erb</p>
+
+
+<%= form_with model: @leave do |form| %>
+  <div>
+    <%= form.radio_button :leaves_type, :sick %>Sick Leave<br />
+    <%= form.radio_button :leaves_type, :casual %>Casual Leave<br />
+  </div>
+
+  <div>
+    <%= form.label :leave_discription %><br>
+    <%= form.text_area :leave_discription%>
+  </div>
+
+  <div>
+    <%= form.label :starting_date %><br>
+    <%= form.date_select :starting_date %>
+  </div>
+
+  <div>
+    <%= form.label :end_date %><br>
+    <%= form.date_select :end_date %>
+  </div>
+  
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

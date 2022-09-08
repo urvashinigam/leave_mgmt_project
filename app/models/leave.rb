@@ -1,5 +1,6 @@
 class Leave < ApplicationRecord
   # self.table_name  "leaves"
   belongs_to :user
-  enum :status, [ :sick_leave, :casule_leave, :holidays ]
+  enum leave_type: %w[sick causal]
+  enum status: %w[pending approved rejected]
 end

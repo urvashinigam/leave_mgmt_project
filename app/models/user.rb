@@ -9,7 +9,7 @@ class User < ApplicationRecord
   #   self.role ||= :user
   #  end
    
-  has_many :leave, class_name: 'Leave', dependent: :destroy 
+  has_many :leaves, class_name: 'Leave', dependent: :destroy 
   # validates :name, acceptance: { message: 'must be abided' }
   # validates :name, acceptance: false
   # validates :mobile, numericality: { only_integer: true }

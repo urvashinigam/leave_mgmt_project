@@ -1,0 +1,13 @@
+
+
+
+<h1>Leaves</h1>
+
+  <% @leave.each do |leaves| %>
+    <tr>
+      
+      <td><%= link_to leaves.user_id , leaves_path(leaves)%></td>
+    </tr>
+  <% end %>
+ 
+

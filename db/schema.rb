@@ -10,19 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_29_060317) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_08_125930) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "leaves", force: :cascade do |t|
-    t.integer "status"
-    t.integer "leaves_type"
+    t.integer "status", default: 0
     t.string "leave_discription"
-    t.string "starting_date"
-    t.string "end_date"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "leaves_type"
+    t.date "starting_date"
+    t.date "end_date"
     t.index ["user_id"], name: "index_leaves_on_user_id"
   end
 
@@ -39,6 +39,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_29_060317) do
     t.string "address"
     t.string "type"
     t.string "status"
+    t.integer "sickleave", default: 5
+    t.integer "casualleave", default: 10
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
