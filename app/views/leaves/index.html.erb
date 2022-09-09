@@ -2,12 +2,56 @@
 
 
 <h1>Leaves</h1>
-
-  <% @leave.each do |leaves| %>
+<table>
+  <thead><th>name</th><th>sl</th><th>cl</th></thead>
+  <tbody>
+  <% @leave.each do |leave| %>
     <tr>
-      
-      <td><%= link_to leaves.user_id , leaves_path(leaves)%></td>
+      <td><%= leave.user.name %></td>
+      <td><%= link_to leave.casual , leafe_path(leave)%></td>
+      <td><%= link_to leave.user_id , leafe_path(leave)%></td>
+      <td><%= link_to leave.user_id , leafe_path(leave)%></td>
+
     </tr>
   <% end %>
- 
+</tbody>
+</table>
 
+-------------------------------------------------------------------------------------------
+<!-- <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Casule Leaves</th>
+      <th scope="col">Sick Leaves</th>
+      <th scope="col">Apply Leaves</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @leave.each do |leave| %>
+    <tr>
+      
+      <td><%= leave.user.name %></td>
+    </tr>
+  <% end %>
+    <tr>
+      <th scope="row">1</th>
+      <td>10</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td></td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+
+
+ -->

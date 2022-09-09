@@ -6,17 +6,14 @@ class LeavesController < ApplicationController
   # end
 
   def index
-    # byebug
-    #    @leaves = current_user.employee? ? current_user.leaves : Leave.all
     @leave = Leave.all
   end
 
   def new
-      @leave = Leave.new
+    @leave = Leave.new
   end
 
   def create
-    byebug
     @leave = Leave.new(leave_params.merge(user_id: current_user.id))
     if @leave.save
       redirect_to leaves_path
@@ -31,7 +28,7 @@ class LeavesController < ApplicationController
   end
 
   def update
-    @leave = Article.find(params[:id])
+    @leave = Leave.find(params[:id])
 
     if @leave.update(leave_params)
       redirect_to @leave
@@ -48,12 +45,19 @@ class LeavesController < ApplicationController
   end
 
   def status
+    if current_user.admin?
+      @leave = Leave.find_by(id: params[:id])
+      @leave.approved!
+      flash[:notice] = "Leave Approved!!!"
+
   end
-  
+
 
   def show
-    @leaves = Leave.find(params[:id])
+    @leave = Leave.find(params[:id])
+    byebug
   end
+  
 
   private
   def leave_params

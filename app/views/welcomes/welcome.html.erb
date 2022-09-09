@@ -1,4 +1,8 @@
 test welcome page
+<% if current_user %>
+ <p>Hello <%= current_user.email%>!</p>
+ <p>You Have Sucssfully create Account</p>
+<% end %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,14 +39,3 @@ test welcome page
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
