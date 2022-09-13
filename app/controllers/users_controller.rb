@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  
   def index
     @users = User.all
   end
@@ -7,6 +8,41 @@ class UsersController < ApplicationController
     @users = User.find(params[:id])
   end
    
+  # def status
+  #   if @leave.empty?
+  #     puts 'there is no request'
+    
+  #   else
+  #     @levaes.collect do |p|
+  #       puts "#{p[:Leaves]} day leave request come"
+  #       puts 'Press 1 to Accept'
+  #       puts 'Press 2 to Reject'
+  #       num = gets.chomp.to_i
+  #       case num
+  #       when 1
+  #         while true
+  #           if @@str.eql?('Accepted')
+  #             puts 'Already accepted'
+  #             hr_menu
+  #           else
+  #             puts 'Accepted'
+  #             Main.leaveUpdateSl(p[:Leaves])
+  #             puts "#{Leaves}"
+  #             @@str = 'Accepted'
+  #             hr_menu
+  #           end
+  #         end
+  #       when 2
+  #         puts 'Rejected'
+  #         hr_menu
+  #         break
+  #       else
+  #         puts 'Not a right choice'
+  #       end
+  #     end
+  #   end
+  # end
+
   # def new
   #   @users = User.new
   # end

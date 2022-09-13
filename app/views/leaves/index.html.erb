@@ -1,13 +1,50 @@
-
-
-
 <h1>Leaves</h1>
+<% if current_user.employee? %>
+<%= link_to "apply for leave", new_leafe_path %>
+<% end %>
 
-  <% @leave.each do |leaves| %>
-    <tr>
-      
-      <td><%= link_to leaves.user_id , leaves_path(leaves)%></td>
-    </tr>
-  <% end %>
- 
+<!-- Start Styles. Move the 'style' tags and everything between them to between the 'head' tags -->
+<style type="text/css">
+  .myTable { background-color:#eee;border-collapse:collapse;width: 100%; }
+  .myTable th { background-color:#000;color:white }
+  .myTable td, .myTable th { padding:5px;border:1px solid #000; }
+  </style>
+  <!-- End Styles -->
+  <table class="myTable">
+  <tr>
+    <thead>
+      <th>name</th>
+      <th>Sick_leaves</th>
+      <th>Casule_leaves</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Total Days</th>
+      <th>Status</th>
+      <% if current_user.hr? %>
+      <th>approve</th>
+      <th>Reject</th>
+      <% end %>
 
+    </thead>
+    <tbody>
+      <% @leaves.each do |leave| %>
+        <tr>
+          <td><%= leave.user.name %></td>
+          <td><%= leave.user.sickleave %></td>
+          <td><%= leave.user.casualleave %></td>
+          <td><%= leave.starting_date.strftime("%Y-%m-%d")%></td>
+          <td><%= leave.end_date.strftime("%Y-%m-%d") %></td>
+          <td><%= Time.diff(leave.starting_date, leave.end_date, '%M %w %d')[:diff]%></td>
+          <td><%= leave.status %></td>
+          <% if current_user.hr? %>
+          <td> <%= button_to "approve", leafe_path(leave.id, :status => "approved"), :method => :patch %> </td>
+          <td><%= button_to "reject", leafe_path(leave.id, :status => "rejected"), :method => :patch %></td>
+          <% end %>
+
+         </tr>
+      <% end %>
+  
+  </table>
+  
+
+  

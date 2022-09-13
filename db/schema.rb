@@ -21,8 +21,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_08_125930) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "leaves_type"
-    t.date "starting_date"
-    t.date "end_date"
+    t.datetime "starting_date", precision: nil
+    t.datetime "end_date", precision: nil
     t.index ["user_id"], name: "index_leaves_on_user_id"
   end
 
@@ -38,9 +38,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_08_125930) do
     t.string "mobile"
     t.string "address"
     t.string "type"
-    t.string "status"
     t.integer "sickleave", default: 5
     t.integer "casualleave", default: 10
+    t.string "status"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
