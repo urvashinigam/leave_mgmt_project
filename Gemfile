@@ -76,4 +76,5 @@ gem 'devise'
 gem "letter_opener", group: :development
 gem 'byebug'
 gem 'jsbundling-rails'  # needed for bootstrap javascript
-gem 'cssbundling-rails' # Install bootstrap 5
+gem 'cssbundling-rails' # Install bootstrap 5 
+gem 'time_diff', '~> 0.3.0'

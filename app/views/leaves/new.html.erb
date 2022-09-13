@@ -11,6 +11,9 @@
   <div>
     <%= form.label :leave_discription %><br>
     <%= form.text_area :leave_discription%>
+    <% @leave.errors.full_messages_for(:leave_discription).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
   </div>
 
   <div>

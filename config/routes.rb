@@ -2,9 +2,11 @@ Rails.application.routes.draw do
 
    devise_for :users
    resources :users
-   resources :leaves
+   resources :leaves 
+  
   root to: "welcomes#welcome"
-   
+  get '/welcome', to: 'welcomes#welcome'
+
   # resources :hr
   # resources :employee
 

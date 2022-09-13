@@ -1,57 +1,50 @@
-
-
-
 <h1>Leaves</h1>
-<table>
-  <thead><th>name</th><th>sl</th><th>cl</th></thead>
-  <tbody>
-  <% @leave.each do |leave| %>
-    <tr>
-      <td><%= leave.user.name %></td>
-      <td><%= link_to leave.casual , leafe_path(leave)%></td>
-      <td><%= link_to leave.user_id , leafe_path(leave)%></td>
-      <td><%= link_to leave.user_id , leafe_path(leave)%></td>
+<% if current_user.employee? %>
+<%= link_to "apply for leave", new_leafe_path %>
+<% end %>
 
-    </tr>
-  <% end %>
-</tbody>
-</table>
+<!-- Start Styles. Move the 'style' tags and everything between them to between the 'head' tags -->
+<style type="text/css">
+  .myTable { background-color:#eee;border-collapse:collapse;width: 100%; }
+  .myTable th { background-color:#000;color:white }
+  .myTable td, .myTable th { padding:5px;border:1px solid #000; }
+  </style>
+  <!-- End Styles -->
+  <table class="myTable">
+  <tr>
+    <thead>
+      <th>name</th>
+      <th>Sick_leaves</th>
+      <th>Casule_leaves</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Total Days</th>
+      <th>Status</th>
+      <% if current_user.hr? %>
+      <th>approve</th>
+      <th>Reject</th>
+      <% end %>
 
--------------------------------------------------------------------------------------------
-<!-- <table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Casule Leaves</th>
-      <th scope="col">Sick Leaves</th>
-      <th scope="col">Apply Leaves</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @leave.each do |leave| %>
-    <tr>
-      
-      <td><%= leave.user.name %></td>
-    </tr>
-  <% end %>
-    <tr>
-      <th scope="row">1</th>
-      <td>10</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td></td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @leaves.each do |leave| %>
+        <tr>
+          <td><%= leave.user.name %></td>
+          <td><%= leave.user.sickleave %></td>
+          <td><%= leave.user.casualleave %></td>
+          <td><%= leave.starting_date.strftime("%Y-%m-%d")%></td>
+          <td><%= leave.end_date.strftime("%Y-%m-%d") %></td>
+          <td><%= Time.diff(leave.starting_date, leave.end_date, '%M %w %d')[:diff]%></td>
+          <td><%= leave.status %></td>
+          <% if current_user.hr? %>
+          <td> <%= button_to "approve", leafe_path(leave.id, :status => "approved"), :method => :patch %> </td>
+          <td><%= button_to "reject", leafe_path(leave.id, :status => "rejected"), :method => :patch %></td>
+          <% end %>
 
+         </tr>
+      <% end %>
+  
+  </table>
+  
 
- -->
+  
